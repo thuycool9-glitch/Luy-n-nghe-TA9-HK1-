@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENGLISH 9 – LISTENING CHALLENGE</title>
+<style>
+:root{--ink:#14213d;--mut:#5b6b8a;--blue:#2563eb;--blue2:#1e40af;--org:#f97316;--grn:#16a34a;--red:#dc2626;--line:#d6e0f5}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#e3efff,#fff3e2) fixed;min-height:100vh}
+#hud{position:sticky;top:0;z-index:20;display:flex;gap:14px;align-items:center;padding:8px 16px;background:#14213dee;color:#fff;font-weight:600;flex-wrap:wrap}
+#hud[hidden]{display:none}#hud .sp{flex:1}
+#hud .gp{flex:2;min-width:120px;height:10px;background:#ffffff33;border-radius:9px;overflow:hidden}
+#hud .gp i{display:block;height:100%;background:linear-gradient(90deg,#34d399,#fbbf24);transition:width .4s}
+main{max-width:980px;margin:0 auto;padding:18px 14px 50px}
+#view.in{animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 28px #1e40af1f;border:1px solid var(--line);margin-bottom:16px}
+h1{margin:.2em 0;font-size:clamp(28px,6vw,46px);letter-spacing:.5px;color:var(--blue2)}
+h2{margin:.2em 0 .6em}
+.sub{font-size:clamp(17px,3vw,22px);color:var(--org);font-weight:700;margin:0 0 14px}
+.hero{text-align:center}
+.mos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.mos img{width:100%;border-radius:12px;box-shadow:0 4px 12px #0002}
+.stat{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.stat span{background:#eef4ff;border:1px solid var(--line);border-radius:30px;padding:6px 16px;font-weight:700;color:var(--blue2)}
+.btn{font:inherit;font-weight:800;border:0;border-radius:14px;padding:14px 26px;font-size:17px;cursor:pointer;background:#e8eefc;color:var(--blue2);transition:transform .15s,box-shadow .15s;margin:4px}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 14px #1e40af33}
+.btn.pri{background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff}
+.btn.go{background:linear-gradient(135deg,#f97316,#fb923c);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+input.nm{font:inherit;padding:13px 16px;border:2px solid var(--line);border-radius:14px;width:min(340px,90%);text-align:center;font-size:18px}
+input.nm:focus,.gi:focus{outline:3px solid #93c5fd;border-color:var(--blue)}
+.err{color:var(--red);font-weight:700;min-height:1.4em}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rc{font:inherit;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:14px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:.2s}
+.rc:hover:not(:disabled){border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 18px #2563eb25}
+.rc small{color:var(--org);font-weight:800}.rc span{color:var(--mut);font-size:14px}
+.rc.done{background:#ecfdf3;border-color:#86efac;cursor:default}
+.player .ph{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.player .pc{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.player input[type=range]{accent-color:var(--blue)}#seek{flex:1;min-width:140px}#vol{width:90px}
+@media(max-width:700px){.player{position:sticky;top:48px;z-index:10}}
+.tag{display:inline-block;background:var(--blue);color:#fff;border-radius:8px;padding:2px 12px;font-size:13px;font-weight:800;letter-spacing:.6px}
+.qn{float:right;color:var(--mut);font-weight:700}
+.prog{height:12px;background:#e5ecfb;border-radius:9px;overflow:hidden;margin:10px 0 14px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#22d3ee);transition:width .4s}
+.qt{font-size:clamp(18px,3vw,23px);font-weight:700;margin:8px 0 14px}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:760px){.opts{grid-template-columns:repeat(2,1fr)}}
+.opt{position:relative;padding:0;border:3px solid transparent;background:#fff;border-radius:16px;cursor:pointer;overflow:hidden;transition:.18s;box-shadow:0 3px 10px #0002}
+.opt img{display:block;width:100%}
+.opt:hover:not(:disabled){transform:scale(1.03);border-color:var(--blue)}
+.opt:disabled{cursor:default}.opt.dim{opacity:.55}
+.opt.ok{border-color:var(--grn);box-shadow:0 0 0 5px #16a34a44;opacity:1}
+.opt.bad{border-color:var(--red);box-shadow:0 0 0 5px #dc262644;animation:shake .4s;opacity:1}
+.opt.ok::after,.opt.bad::after{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;color:#fff;font-weight:900;font-size:22px;line-height:34px;text-align:center}
+.opt.ok::after{content:"✓";background:var(--grn)}.opt.bad::after{content:"✗";background:var(--red)}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.tf{display:flex;gap:14px;flex-wrap:wrap}.tfb{flex:1;min-width:150px;font-size:22px;padding:22px;border:3px solid transparent}
+.tfb.t{background:#e7f8ee;color:#166534}.tfb.f{background:#fdecec;color:#991b1b}
+.tfb.ok,.gi.ok{border-color:var(--grn)!important;box-shadow:0 0 0 5px #16a34a44}
+.tfb.bad,.gi.bad{border-color:var(--red)!important;box-shadow:0 0 0 5px #dc262644;animation:shake .4s}
+.gap{font-size:clamp(19px,3vw,25px);font-weight:600;line-height:2.2}
+.gi{font:inherit;font-weight:700;width:min(220px,60vw);padding:6px 12px;border:3px solid var(--line);border-radius:12px;text-align:center;color:var(--blue2)}
+.fb{margin-top:16px;border-radius:16px;padding:16px 18px;animation:pop .45s}
+.fb.ok{background:#e7f8ee;border:2px solid var(--grn)}.fb.bad{background:#fdecec;border:2px solid var(--red)}
+.fb h3{margin:0 0 6px;font-size:24px}.fb.ok h3{color:#166534}.fb.bad h3{color:#991b1b}
+.fb p{margin:4px 0}.fb .ex{color:#33415c}
+@keyframes pop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+.big{font-size:clamp(34px,8vw,60px);font-weight:900;margin:.1em 0;background:linear-gradient(90deg,#f97316,#2563eb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.grid div{background:#f3f7ff;border-radius:14px;padding:12px;text-align:center;border:1px solid var(--line)}
+.grid b{display:block;font-size:26px;color:var(--blue2)}.grid span{color:var(--mut);font-size:14px}
+.wr{border-left:5px solid var(--red);background:#fff7f7;padding:8px 12px;border-radius:8px;margin:8px 0;font-size:15px}
+.rv{border-left:5px solid var(--grn);background:#f7fff9;padding:8px 12px;border-radius:8px;margin:8px 0;font-size:15px}.rv.n{border-color:var(--red);background:#fff7f7}
+details{margin:8px 0}summary{cursor:pointer;font-weight:800;padding:10px;background:#eef4ff;border-radius:12px}
+table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+.cf{position:fixed;top:-20px;width:10px;height:14px;z-index:50;pointer-events:none;animation:fall 1.4s linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.6}}
+#how{position:fixed;inset:0;background:#14213d99;display:flex;align-items:center;justify-content:center;z-index:60;padding:14px}
+#how[hidden]{display:none}#how .card{max-width:620px;max-height:90vh;overflow:auto;margin:0}
+</style></head><body>
+<div id="hud" hidden>
+ <span>👤 <span id="hn"></span></span><span>⭐ <span id="hs">0</span> pts</span><span>⏱ <span id="tm">00:00</span></span>
+ <span class="gp" title="Overall progress"><i id="hg"></i></span><span id="hc"></span>
+</div>
+<main><div id="view"></div></main>
+<div id="how" hidden><div class="card">
+ <h2>📖 How to play · Cách chơi</h2>
+ <ol>
+  <li>Press <b>START GAME</b> and choose a round (12 listening tasks, 15 questions each).<br><i>Chọn một vòng chơi; mỗi vòng có 1 bài nghe và 15 câu hỏi.</i></li>
+  <li>Press <b>▶ PLAY AUDIO</b>. You can pause, replay, drag the bar and change the volume as many times as you need.<br><i>Bạn có thể nghe lại không giới hạn.</i></li>
+  <li>Answer Multiple Choice (pictures), Gap Filling (type one word) and True/False questions.<br><i>Trắc nghiệm bằng hình, điền từ, đúng/sai.</i></li>
+  <li>Each correct answer = <b>10 points</b>, plus <b>+5 speed bonus</b> if you answer quickly. Each question is scored only once.<br><i>Mỗi câu đúng 10 điểm, trả lời nhanh được thêm 5 điểm.</i></li>
+  <li>Finish all 12 rounds to see your results, wrong answers and explanations.<br><i>Hoàn thành 12 vòng để xem kết quả.</i></li>
+ </ol>
+ <div style="text-align:center"><button class="btn pri" data-act="closeHow">GOT IT!</button></div>
+</div></div>
+<script src="data.js"></script>
+<script src="audio.js"></script>
+<script src="images.js"></script>
+<script>
+const D=window.ROUNDS;D.forEach((r,p)=>{r.a=AUD[p];for(let n=0;n<5;n++)r.q[n].i=IMG[p][n]});
+const N=D.length,TOTAL=N*15,Q15=['MULTIPLE CHOICE','GAP FILLING','TRUE OR FALSE'];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S=null,cur=null,aud=null,tmr=null,mem=[];
+const fresh=n=>{S={name:n,res:Array(N).fill(null),score:0,t0:Date.now(),tEnd:null,cnt:0}};
+const fmt=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const norm=s=>String(s).toLowerCase().trim().replace(/[^a-z0-9' ]/g,'').replace(/\s+/g,' ');
+const view=h=>{const v=$('#view');v.classList.remove('in');v.innerHTML=h;void v.offsetWidth;v.classList.add('in');scrollTo(0,0)};
+function hud(){const h=$('#hud');h.hidden=false;$('#hn').textContent=S.name;$('#hs').textContent=S.score;$('#tm').textContent=fmt(((S.tEnd||Date.now())-S.t0)/1000);$('#hg').style.width=S.cnt/TOTAL*100+'%';$('#hc').textContent=S.cnt+'/'+TOTAL}
+function startTimer(){clearInterval(tmr);tmr=setInterval(()=>{if(S&&!S.tEnd)$('#tm').textContent=fmt((Date.now()-S.t0)/1000)},1000)}
+function stopAud(){if(aud){try{aud.pause()}catch(e){}aud.onended=aud.ontimeupdate=aud.onloadedmetadata=null;aud=null}}
+let ac;function beep(ok){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();(ok?[[660,0],[880,.12],[1320,.24]]:[[320,0],[220,.2]]).forEach(([f,t])=>{const o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime+t;o.type=ok?'sine':'sawtooth';o.frequency.value=f;g.gain.setValueAtTime(.13,n);g.gain.exponentialRampToValueAtTime(.001,n+.2);o.connect(g);g.connect(ac.destination);o.start(n);o.stop(n+.22)})}catch(e){}}
+function confetti(){for(let i=0;i<26;i++){const s=document.createElement('span');s.className='cf';s.style.left=Math.random()*100+'vw';s.style.background=['#f97316','#2563eb','#16a34a','#facc15','#ec4899'][i%5];s.style.animationDelay=Math.random()*.4+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2200)}}
+const qtext=q=>q.t=='gap'?q.pre+' ____ '+q.post:q.q;
+const rightText=q=>q.t=='mcq'?q.k+'. '+q.o['ABCD'.indexOf(q.k)]:q.t=='tf'?(q.k?'TRUE':'FALSE'):q.k[0];
+/* ---------- screens ---------- */
+function home(){stopAud();clearInterval(tmr);$('#hud').hidden=true;S=null;
+ const m=[D[7].q[0].i[2],D[3].q[2].i[1],D[0].q[0].i[1],D[1].q[0].i[1]];
+ view(`<section class="card hero"><div style="font-size:54px">🎧</div><h1>ENGLISH 9 – LISTENING CHALLENGE</h1><p class="sub">Let's Listen, Think and Win!</p>
+ <div class="mos">${m.map(s=>`<img alt="" src="${s}">`).join('')}</div>
+ <div class="stat"><span>🎵 ${N} listening tasks</span><span>❓ ${TOTAL} questions</span><span>⭐ ${TOTAL*10} points</span></div>
+ <p><input class="nm" id="nm" maxlength="30" placeholder="Enter your name" aria-label="Student name" autocomplete="off"></p><div class="err" id="er"></div>
+ <button class="btn pri" data-act="start" style="font-size:22px">▶ START GAME</button>
+ <button class="btn" data-act="how">📖 HOW TO PLAY</button><button class="btn" data-act="board">🏆 RESULTS</button></section>`);
+ $('#nm').addEventListener('keydown',e=>{if(e.key=='Enter')act.start()})}
+function map(){stopAud();cur=null;hud();const n=S.res.filter(Boolean).length;
+ view(`<h2>🗺 Choose a round <small style="color:var(--mut);font-size:15px">· ${n}/${N} completed</small></h2><div class="map">${D.map((r,i)=>{const x=S.res[i];
+ return `<button class="rc ${x?'done':''}" ${x?'disabled':''} data-act="round" data-r="${i}"><small>${r.u} · ${r.p}</small><b>${esc(r.t)}</b><span>${x?`✓ ${x.c}/15 correct · ${x.pts} pts`:'15 questions · tap to play ▶'}</span></button>`}).join('')}</div>
+ <p style="text-align:center;margin-top:18px"><button class="btn go" data-act="finish" ${n<N?'disabled':''}>🏁 VIEW FINAL RESULTS</button>${n<N?`<br><small>Complete all ${N} rounds to see your final results.</small>`:''}</p>`)}
+function startRound(i){stopAud();cur={r:i,i:0,a:[],pts:0,c:0,locked:false,t:Date.now()};const r=D[i];aud=new Audio(r.a);aud.preload='auto';
+ view(`<div class="card player"><div class="ph"><b>🎧 ${r.u} · ${r.p}</b><span style="color:var(--mut)">${esc(r.t)}</span></div>
+ <div class="pc"><button class="btn pri" id="pp" data-act="pp">▶ PLAY AUDIO</button><button class="btn" data-act="rep">↺ REPLAY</button>
+ <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Audio progress"><span id="pt">0:00 / 0:00</span>
+ <label>🔊 <input type="range" id="vol" min="0" max="1" step=".05" value=".9" aria-label="Volume"></label></div></div><div id="qbox"></div>`);
+ const T=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
+ const up=()=>{$('#pt').textContent=T(aud.currentTime)+' / '+T(aud.duration);if(aud.duration)$('#seek').value=aud.currentTime/aud.duration*1000};
+ aud.ontimeupdate=aud.onloadedmetadata=up;aud.onended=()=>{$('#pp').textContent='▶ PLAY AUDIO';up()};aud.volume=.9;
+ $('#seek').addEventListener('input',e=>{if(aud.duration)aud.currentTime=e.target.value/1000*aud.duration});
+ $('#vol').addEventListener('input',e=>{aud.volume=+e.target.value});showQ()}
+function showQ(){const r=D[cur.r],q=r.q[cur.i];cur.locked=false;cur.t=Date.now();const ti=q.t=='mcq'?0:q.t=='gap'?1:2;let b;
+ if(q.t=='mcq')b=`<div class="opts">${q.o.map((o,k)=>`<button class="opt" data-act="pick" data-k="${'ABCD'[k]}" aria-label="${'ABCD'[k]}. ${esc(o)}"><img alt="${esc(o)}" src="${q.i[k]}"></button>`).join('')}</div>`;
+ else if(q.t=='tf')b=`<div class="tf"><button class="btn tfb t" data-act="pick" data-k="1">✔ TRUE</button><button class="btn tfb f" data-act="pick" data-k="0">✘ FALSE</button></div>`;
+ else b=`<p class="gap">${esc(q.pre)} <input class="gi" id="gi" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Missing word"> ${esc(q.post)}</p><button class="btn pri" data-act="chk">CHECK ✓</button>`;
+ $('#qbox').innerHTML=`<div class="card"><span class="tag">${Q15[ti]}</span><span class="qn">Question ${cur.i+1} / 15</span><div class="prog"><i style="width:${cur.i/15*100}%"></i></div>
+ <div class="qt">${q.t=='mcq'?esc(q.q):q.t=='tf'?'True or false? <span style="color:var(--blue2)">'+esc(q.q)+'</span>':'Listen and type the missing word:'}</div>${b}<div id="fb"></div></div>`;
+ const g=$('#gi');if(g){g.focus({preventScroll:true});g.addEventListener('keydown',e=>{if(e.key=='Enter')act.chk()})}}
+function grade(val){if(!cur||cur.locked)return;cur.locked=true;const q=D[cur.r].q[cur.i];let ok,shown;
+ if(q.t=='mcq'){ok=val==q.k;shown=val+'. '+q.o['ABCD'.indexOf(val)]}
+ else if(q.t=='tf'){ok=(val=='1')==q.k;shown=val=='1'?'TRUE':'FALSE'}
+ else{ok=q.k.includes(norm(val));shown=val.trim()||'(blank)'}
+ const lim=q.t=='gap'?20000:10000,bonus=ok&&Date.now()-cur.t<=lim?5:0,pts=ok?10+bonus:0;
+ cur.a[cur.i]={shown,ok,pts};cur.pts+=pts;if(ok)cur.c++;S.score+=pts;S.cnt++;hud();
+ document.querySelectorAll('#qbox .opt,#qbox .tfb').forEach(e=>{e.disabled=true;const k=e.dataset.k,right=q.t=='mcq'?q.k:(q.k?'1':'0');
+  if(k==right)e.classList.add('ok');else if(k==val)e.classList.add('bad');else e.classList.add('dim')});
+ const g=$('#gi');if(g){g.disabled=true;g.classList.add(ok?'ok':'bad');const c=document.querySelector('[data-act=chk]');if(c)c.remove()}
+ const last=cur.i==14;
+ $('#fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${ok?'✓ EXCELLENT! CORRECT ANSWER!':'✗ OOPS! TRY AGAIN!'}</h3>
+ <p>${ok?`+${pts} points${bonus?' (includes +5 speed bonus ⚡)':''}`:`Your answer: <b>${esc(shown)}</b> · Correct answer: <b>${esc(rightText(q))}</b>`}</p>
+ <p class="ex">💡 ${esc(q.e)}</p><button class="btn ${ok?'pri':'go'}" data-act="next">${last?'FINISH ROUND ✔':'NEXT ▶'}</button></div>`;
+ beep(ok);if(ok)confetti();$('#fb').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function roundEnd(){stopAud();S.res[cur.r]={c:cur.c,pts:cur.pts,a:cur.a};const left=S.res.map((x,i)=>x?-1:i).filter(i=>i>=0),nx=left.find(i=>i>cur.r)??left[0];
+ view(`<section class="card hero"><div style="font-size:50px">${cur.c>=12?'🏆':cur.c>=8?'🎉':'💪'}</div><h2>Round complete!</h2><p class="sub">${D[cur.r].u} · ${D[cur.r].p} – ${esc(D[cur.r].t)}</p>
+ <div class="grid"><div><b>${cur.c}/15</b><span>correct answers</span></div><div><b>${cur.pts}</b><span>points this round</span></div><div><b>${S.score}</b><span>total score</span></div><div><b>${S.res.filter(Boolean).length}/${N}</b><span>rounds completed</span></div></div>
+ <button class="btn" data-act="map">🗺 BACK TO MAP</button>${nx!==undefined?`<button class="btn pri" data-act="round" data-r="${nx}">NEXT ROUND ▶</button>`:`<button class="btn go" data-act="finish">🏁 VIEW FINAL RESULTS</button>`}</section>`);hud()}
+function grade_(p){return p>=90?['OUTSTANDING!','Tuyệt vời! You have excellent listening skills. Bạn có kỹ năng nghe rất xuất sắc!']:p>=80?['EXCELLENT!','Great work! Keep it up. Làm rất tốt, hãy tiếp tục phát huy nhé!']:p>=65?['VERY GOOD!','Very good result! Review the mistakes to do even better. Kết quả tốt, hãy xem lại các câu sai để tiến bộ hơn!']:p>=50?['GOOD JOB!','Good effort! Listen again and practise more. Bạn đã cố gắng tốt, hãy nghe lại và luyện tập thêm!']:['KEEP PRACTICING!','Do not give up! Listen to each audio again slowly. Đừng nản lòng, hãy nghe lại từng bài thật chậm và luyện tập thêm!']}
+function finish(){S.tEnd=Date.now();clearInterval(tmr);hud();const st=stats(),e={name:S.name,score:S.score,pct:st.pct,time:fmt((S.tEnd-S.t0)/1000),date:new Date().toLocaleString()};
+ mem.push(e);try{const b=JSON.parse(localStorage.getItem('e9lc')||'[]');b.push(e);localStorage.setItem('e9lc',JSON.stringify(b.slice(-50)))}catch(x){}results()}
+function stats(){let c=0;S.res.forEach(x=>{if(x)c+=x.c});return{c,w:TOTAL-c,pct:Math.round(c/TOTAL*100)}}
+function results(){stopAud();$('#hud').hidden=true;const st=stats(),g=grade_(st.pct);let wr='';
+ S.res.forEach((x,r)=>x.a.forEach((a,i)=>{if(!a.ok){const q=D[r].q[i];wr+=`<div class="wr"><b>${D[r].u} ${D[r].p} · Q${i+1}</b> – ${esc(qtext(q))}<br>Your answer: <b>${esc(a.shown)}</b> → Correct: <b style="color:var(--grn)">${esc(rightText(q))}</b></div>`}}));
+ view(`<section class="card hero"><p class="sub">Well done, ${esc(S.name)}!</p><div class="big">${g[0]}</div><p>${g[1]}</p>
+ <div class="grid"><div><b>${TOTAL}</b><span>total questions</span></div><div><b style="color:var(--grn)">${st.c}</b><span>correct</span></div><div><b style="color:var(--red)">${st.w}</b><span>wrong</span></div><div><b>${st.pct}%</b><span>accuracy</span></div><div><b>${S.score}</b><span>total score</span></div><div><b>${fmt((S.tEnd-S.t0)/1000)}</b><span>time</span></div></div>
+ <button class="btn pri" data-act="again">🔁 PLAY AGAIN</button><button class="btn" data-act="review">📝 REVIEW ANSWERS</button><button class="btn" data-act="home">🏠 BACK TO HOME</button><button class="btn" data-act="board">🏆 VIEW RESULTS</button></section>
+ <section class="card"><h2>❌ Wrong answers · Các câu trả lời sai</h2>${wr||'<p>🎉 No mistakes! Perfect! Không có câu sai nào!</p>'}</section>`)}
+function review(){view(`<section class="card"><h2>📝 Review answers · Xem lại đáp án</h2><button class="btn" data-act="results">◀ BACK TO RESULTS</button>${D.map((r,ri)=>{const x=S.res[ri];return `<details><summary>${r.u} · ${r.p} – ${esc(r.t)} (${x.c}/15)</summary>${r.q.map((q,i)=>{const a=x.a[i];return `<div class="rv ${a.ok?'':'n'}"><b>${a.ok?'✓':'✗'} Q${i+1}</b> ${esc(qtext(q))}<br>Your answer: <b>${esc(a.shown)}</b> · Correct: <b>${esc(rightText(q))}</b><br><small>💡 ${esc(q.e)}</small></div>`}).join('')}</details>`}).join('')}</section>`)}
+function board(){stopAud();let b=[];try{b=JSON.parse(localStorage.getItem('e9lc')||'[]')}catch(x){}if(!b.length)b=mem.slice();b=b.slice().sort((p,q)=>q.score-p.score||(p.time>q.time?1:-1));
+ view(`<section class="card"><h2>🏆 Leaderboard · Bảng xếp hạng</h2>${b.length?`<table><tr><th>#</th><th>Name</th><th>Score</th><th>Accuracy</th><th>Time</th></tr>${b.slice(0,10).map((e,i)=>`<tr><td>${i+1}</td><td>${esc(e.name)}</td><td><b>${e.score}</b></td><td>${e.pct}%</td><td>${e.time}</td></tr>`).join('')}</table>`:'<p>No results yet. Play a game first! Chưa có kết quả nào.</p>'}
+ <p><button class="btn" data-act="${S&&S.tEnd?'results':'home'}">◀ BACK</button></p></section>`)}
+/* ---------- actions ---------- */
+const act={
+ how(){$('#how').hidden=false},closeHow(){$('#how').hidden=true},
+ start(){const n=($('#nm').value||'').trim();if(!n){$('#er').textContent='Please enter your name to start! · Hãy nhập tên của bạn.';$('#nm').focus();return}fresh(n);startTimer();map()},
+ round(b){startRound(+b.dataset.r)},map,home,review,board,finish,results,
+ pp(){if(!aud)return;if(aud.paused){aud.play().catch(()=>{});$('#pp').textContent='❚❚ PAUSE'}else{aud.pause();$('#pp').textContent='▶ PLAY AUDIO'}},
+ rep(){if(!aud)return;aud.currentTime=0;aud.play().catch(()=>{});$('#pp').textContent='❚❚ PAUSE'},
+ pick(b){grade(b.dataset.k)},chk(){grade(($('#gi')||{}).value||'')},
+ next(){if(cur.i<14){cur.i++;showQ();$('#qbox').scrollIntoView({behavior:'smooth',block:'start'})}else roundEnd()},
+ again(){fresh(S.name);startTimer();map()}
+};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(b&&act[b.dataset.act])act[b.dataset.act](b)});
+home();
+</script></body></html>
